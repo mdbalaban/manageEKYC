@@ -6,16 +6,16 @@
     class="font-weight-bold"
     @click="openForAdd"
   >
-    إضافة مدينة
+    إضافة جنسية
   </v-btn>
 
   <v-dialog v-model="dialog" max-width="500" persistent @after-leave="resetForm">
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary">mdi-city-variant-outline</v-icon>
+          <v-icon color="primary">mdi-map-marker</v-icon>
           <span class="font-weight-bold">{{
-            isEditMode ? 'تعديل مدينة' : 'إضافة مدينة جديدة'
+            isEditMode ? 'تعديل الجنسية' : 'إضافة جنسية جديدة'
           }}</span>
         </div>
       </v-card-title>
@@ -25,9 +25,12 @@
       <v-card-text class="pa-6">
         <v-row>
           <v-col cols="12">
-            <v-text-field
-              v-model="form.name"
-              label="اسم المدينة"
+            <v-select
+              v-model="form.countryId"
+              :items="countriesStore.items"
+              item-title="name"
+              item-value="id"
+              label="الدولة"
               variant="outlined"
               density="comfortable"
               rounded="lg"
@@ -35,12 +38,19 @@
           </v-col>
 
           <v-col cols="12">
-            <v-select
-              v-model="form.countryId"
-              :items="countriesStore.items"
-              item-title="name"
-              item-value="id"
-              label="الدولة"
+            <v-text-field
+              v-model="form.name"
+              label="اسم الجنسية"
+              variant="outlined"
+              density="comfortable"
+              rounded="lg"
+            />
+          </v-col>
+
+          <v-col cols="12">
+            <v-text-field
+              v-model="form.nationalityNumber"
+              label="رقم الجنسية"
               variant="outlined"
               density="comfortable"
               rounded="lg"
@@ -64,9 +74,9 @@
 
 <script setup>
 import { ref, computed, inject } from 'vue'
-import { useCitiesStore, useCountriesStore } from '@/stores/index.js'
+import { useNationalitiesStore, useCountriesStore } from '@/stores/index.js'
 
-const store = useCitiesStore()
+const store = useNationalitiesStore()
 const countriesStore = useCountriesStore()
 const showSnackbar = inject('showSnackbar')
 
@@ -75,7 +85,7 @@ const currentItem = ref(null)
 
 const isEditMode = computed(() => currentItem.value !== null)
 
-const emptyForm = () => ({ name: '', countryId: null })
+const emptyForm = () => ({ name: '', nationalityNumber: '', countryId: null })
 const form = ref(emptyForm())
 
 function openForAdd() {
@@ -86,7 +96,11 @@ function openForAdd() {
 
 function openForEdit(item) {
   currentItem.value = item
-  form.value = { name: item.name, countryId: item.countryId }
+  form.value = {
+    name: item.name,
+    nationalityNumber: item.nationalityNumber,
+    countryId: item.countryId,
+  }
   dialog.value = true
 }
 
@@ -104,10 +118,10 @@ function save() {
 
   if (isEditMode.value) {
     store.update({ ...currentItem.value, ...form.value, countryName: country?.name ?? '' })
-    showSnackbar('تم تعديل المدينة بنجاح')
+    showSnackbar('تم تعديل الجنسية بنجاح')
   } else {
     store.add({ ...form.value, countryName: country?.name ?? '' })
-    showSnackbar('تمت إضافة المدينة بنجاح')
+    showSnackbar('تمت إضافة الجنسية بنجاح')
   }
   close()
 }

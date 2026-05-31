@@ -359,3 +359,71 @@ export const useBranchesStore = defineStore('branches', () => {
   }
   return { items, pagedItems, loading, page, totalPages, toggle, add, update, remove }
 })
+
+export const useNationalitiesStore = defineStore('nationalities', () => {
+  const items = ref([
+    {
+      id: 1,
+      isActive: true,
+      nationalityNumber: '001',
+      name: 'ليبية',
+      countryId: 1,
+      countryName: 'ليبيا',
+    },
+    {
+      id: 2,
+      isActive: true,
+      nationalityNumber: '002',
+      name: 'تونسية',
+      countryId: 1,
+      countryName: 'تونس',
+    },
+    {
+      id: 3,
+      isActive: true,
+      nationalityNumber: '003',
+      name: 'مصرية',
+      countryId: 2,
+      countryName: 'مصر',
+    },
+    {
+      id: 4,
+      isActive: true,
+      nationalityNumber: '004',
+      name: 'سعودية',
+      countryId: 3,
+      countryName: 'السعودية',
+    },
+    {
+      id: 5,
+      isActive: true,
+      nationalityNumber: '005',
+      name: 'امريكية',
+      countryId: 4,
+      countryName: 'امريكا',
+    },
+  ])
+  const loading = ref(false)
+  const page = ref(1)
+  const pageSize = 10
+  const totalPages = computed(() => Math.ceil(items.value.length / pageSize))
+  const pagedItems = computed(() => {
+    const s = (page.value - 1) * pageSize
+    return items.value.slice(s, s + pageSize)
+  })
+  function toggle(item) {
+    const f = items.value.find((i) => i.id === item.id)
+    if (f) f.isActive = !f.isActive
+  }
+  function add(data) {
+    items.value.unshift({ id: Date.now(), isActive: true, ...data })
+  }
+  function update(data) {
+    const idx = items.value.findIndex((i) => i.id === data.id)
+    if (idx !== -1) items.value[idx] = { ...items.value[idx], ...data }
+  }
+  function remove(id) {
+    items.value = items.value.filter((i) => i.id !== id)
+  }
+  return { items, pagedItems, loading, page, totalPages, toggle, add, update, remove }
+})

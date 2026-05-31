@@ -41,6 +41,12 @@ const routes = [
         icon: 'mdi-source-branch',
         component: () => import('@/views/branches/page/index.vue'),
       },
+      {
+        path: '/nationalities',
+        name: 'الجنسيات',
+        icon: 'mdi-flag',
+        component: () => import('@/views/nationalities/page/index.vue'),
+      },
     ],
   },
 ]

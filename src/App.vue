@@ -68,6 +68,7 @@ const navItems = [
   { path: '/regions', title: 'المناطق' },
   { path: '/banks', title: 'المصارف' },
   { path: '/branches', title: 'فروع المصارف' },
+  { path: '/nationalities', title: 'الجنسيات' },
 ]
 
 const currentPageTitle = computed(() => {
