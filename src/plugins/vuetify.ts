@@ -6,6 +6,7 @@ import * as directives from 'vuetify/directives'
 
 import { ar } from 'vuetify/locale'
 import '@mdi/font/css/materialdesignicons.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 export default createVuetify({
   components,

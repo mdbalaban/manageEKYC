@@ -69,6 +69,9 @@ const navItems = [
   { path: '/banks', title: 'المصارف' },
   { path: '/branches', title: 'فروع المصارف' },
   { path: '/nationalities', title: 'الجنسيات' },
+  { path: '/kyc-model-types', title: 'أنواع نماذج KYC' },
+  { path: '/set-reject-messages', title: 'إعداد رسائل الرفض' },
+  { path: '/new-requests', title: 'الطلبات الجديدة' },
 ]
 
 const currentPageTitle = computed(() => {

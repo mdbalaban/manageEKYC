@@ -18,6 +18,12 @@ const routes = [
         component: () => import('@/views/countries/page/index.vue'),
       },
       {
+        path: '/nationalities',
+        name: 'الجنسيات',
+        icon: 'mdi-flag',
+        component: () => import('@/views/nationalities/page/index.vue'),
+      },
+      {
         path: '/cities',
         name: 'المدن',
         icon: 'mdi-city',
@@ -42,10 +48,29 @@ const routes = [
         component: () => import('@/views/branches/page/index.vue'),
       },
       {
-        path: '/nationalities',
-        name: 'الجنسيات',
-        icon: 'mdi-flag',
-        component: () => import('@/views/nationalities/page/index.vue'),
+        path: '/kyc-model-types',
+        name: ' نماذج KYC',
+        icon: 'mdi-account-circle',
+        component: () => import('@/views/kycModelTypes/page/index.vue'),
+      },
+      {
+        path: '/set-reject-messages',
+        name: ' إعداد رسائل الرفض',
+        icon: 'mdi-message',
+        component: () => import('@/views/setRejectMessages/page/index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/requests',
+    name: 'إدارة الطلبات',
+    icon: 'mdi-file-document',
+    children: [
+      {
+        path: '/new-requests',
+        name: 'الطلبات الجديدة',
+        icon: 'mdi-file-document-edit',
+        component: () => import('@/views/newRequestsKyc/page/index.vue'),
       },
     ],
   },

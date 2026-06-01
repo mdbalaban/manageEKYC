@@ -1,71 +1,15 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
-const generate = (count, prefix, extraFields = {}) =>
-  Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    isActive: Math.random() > 0.3,
-    ...extraFields(i + 1),
-  }))
-
 export const useCountriesStore = defineStore('countries', () => {
-  const items = ref(
-    generate(23, 'country', (i) => ({
-      code:
-        [
-          'LY',
-          'EG',
-          'SA',
-          'AE',
-          'KW',
-          'QA',
-          'BH',
-          'OM',
-          'JO',
-          'IQ',
-          'SY',
-          'LB',
-          'TN',
-          'MA',
-          'DZ',
-          'SD',
-          'YE',
-          'PS',
-          'SO',
-          'MR',
-          'DJ',
-          'KM',
-          'TR',
-        ][i - 1] || `C${i}`,
-      name:
-        [
-          'ليبيا',
-          'مصر',
-          'السعودية',
-          'الإمارات',
-          'الكويت',
-          'قطر',
-          'البحرين',
-          'عمان',
-          'الأردن',
-          'العراق',
-          'سوريا',
-          'لبنان',
-          'تونس',
-          'المغرب',
-          'الجزائر',
-          'السودان',
-          'اليمن',
-          'فلسطين',
-          'الصومال',
-          'موريتانيا',
-          'جيبوتي',
-          'جزر القمر',
-          'تركيا',
-        ][i - 1] || `دولة ${i}`,
-      citiesCount: Math.floor(Math.random() * 50) + 2,
-    })),
-  )
+  const items = ref([
+    { id: 1, code: 'LY', name: 'ليبيا', citiesCount: 8, isActive: true },
+    { id: 2, code: 'EG', name: 'مصر', citiesCount: 6, isActive: true },
+    { id: 3, code: 'SA', name: 'السعودية', citiesCount: 5, isActive: true },
+    { id: 4, code: 'AE', name: 'الإمارات', citiesCount: 4, isActive: true },
+    { id: 5, code: 'TN', name: 'تونس', citiesCount: 3, isActive: true },
+  ])
+
   const loading = ref(false)
   const page = ref(1)
   const pageSize = 10
@@ -98,48 +42,36 @@ export const useCountriesStore = defineStore('countries', () => {
 })
 
 export const useCitiesStore = defineStore('cities', () => {
-  const countryNames = ['ليبيا', 'مصر', 'السعودية', 'الإمارات', 'الكويت']
-  const items = ref(
-    Array.from({ length: 30 }, (_, i) => ({
-      id: i + 1,
-      isActive: Math.random() > 0.3,
-      name:
-        [
-          'طرابلس',
-          'بنغازي',
-          'مصراتة',
-          'الزاوية',
-          'البيضاء',
-          'سبها',
-          'الخمس',
-          'زليتن',
-          'أجدابيا',
-          'درنة',
-          'توكرة',
-          'ترهونة',
-          'غريان',
-          'يفرن',
-          'الجفرة',
-          'مزدة',
-          'براك',
-          'أوباري',
-          'غات',
-          'مرزق',
-          'القيقب',
-          'طبرق',
-          'الكفرة',
-          'تازربو',
-          'هون',
-          'شحات',
-          'تمنهنت',
-          'المرج',
-          'الأبيار',
-          'سوسة',
-        ][i] || `مدينة ${i + 1}`,
-      countryId: Math.floor(Math.random() * 5) + 1,
-      countryName: countryNames[Math.floor(Math.random() * 5)],
-    })),
-  )
+  const items = ref([
+    {
+      id: 1,
+      isActive: true,
+      name: 'طرابلس',
+      countryId: 1,
+      countryName: 'ليبيا',
+    },
+    {
+      id: 2,
+      isActive: true,
+      name: 'بنغازي',
+      countryId: 1,
+      countryName: 'ليبيا',
+    },
+    {
+      id: 3,
+      isActive: true,
+      name: 'القاهرة',
+      countryId: 2,
+      countryName: 'مصر',
+    },
+    {
+      id: 4,
+      isActive: true,
+      name: 'الرياض',
+      countryId: 3,
+      countryName: 'السعودية',
+    },
+  ])
   const loading = ref(false)
   const page = ref(1)
   const pageSize = 10
@@ -401,6 +333,153 @@ export const useNationalitiesStore = defineStore('nationalities', () => {
       name: 'امريكية',
       countryId: 4,
       countryName: 'امريكا',
+    },
+  ])
+  const loading = ref(false)
+  const page = ref(1)
+  const pageSize = 10
+  const totalPages = computed(() => Math.ceil(items.value.length / pageSize))
+  const pagedItems = computed(() => {
+    const s = (page.value - 1) * pageSize
+    return items.value.slice(s, s + pageSize)
+  })
+  function toggle(item) {
+    const f = items.value.find((i) => i.id === item.id)
+    if (f) f.isActive = !f.isActive
+  }
+  function add(data) {
+    items.value.unshift({ id: Date.now(), isActive: true, ...data })
+  }
+  function update(data) {
+    const idx = items.value.findIndex((i) => i.id === data.id)
+    if (idx !== -1) items.value[idx] = { ...items.value[idx], ...data }
+  }
+  function remove(id) {
+    items.value = items.value.filter((i) => i.id !== id)
+  }
+  return { items, pagedItems, loading, page, totalPages, toggle, add, update, remove }
+})
+
+export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
+  const items = ref([
+    {
+      id: 1,
+      requestType: 1,
+      modelType: 1,
+      name: 'مواطن ليبي',
+      icon: 'fa fa-user',
+      isActive: true,
+    },
+    {
+      id: 2,
+      requestType: 1,
+      modelType: 2,
+      name: 'أجنبي مقيم',
+      icon: 'fa fa-globe',
+      isActive: true,
+    },
+    {
+      id: 3,
+      requestType: 1,
+      modelType: 3,
+      name: 'أجنبي غير مقيم',
+      icon: 'fa fa-plane',
+      isActive: true,
+    },
+    {
+      id: 4,
+      requestType: 2,
+      modelType: 20,
+      name: 'شركات خاصة',
+      icon: 'fa fa-building',
+      isActive: true,
+    },
+    {
+      id: 5,
+      requestType: 2,
+      modelType: 21,
+      name: 'شركات عامة',
+      icon: 'fa fa-briefcase',
+      isActive: true,
+    },
+    {
+      id: 6,
+      requestType: 2,
+      modelType: 30,
+      name: 'منظمات ومؤسسات',
+      icon: 'fa fa-university',
+      isActive: true,
+    },
+  ])
+
+  const loading = ref(false)
+  const page = ref(1)
+  const pageSize = 10
+
+  const totalPages = computed(() => Math.ceil(items.value.length / pageSize))
+
+  const pagedItems = computed(() => {
+    const start = (page.value - 1) * pageSize
+    return items.value.slice(start, start + pageSize)
+  })
+
+  function toggle(item) {
+    const found = items.value.find((i) => i.id === item.id)
+    if (found) found.isActive = !found.isActive
+  }
+
+  function update(data) {
+    const idx = items.value.findIndex((i) => i.id === data.id)
+    if (idx !== -1) {
+      items.value[idx] = {
+        ...items.value[idx],
+        ...data,
+      }
+    }
+  }
+
+  return {
+    items,
+    pagedItems,
+    loading,
+    page,
+    totalPages,
+    toggle,
+    update,
+  }
+})
+
+export const useRejectMessagesStore = defineStore('rejectMessages', () => {
+  const items = ref([
+    {
+      id: 1,
+      isActive: true,
+      messageType: '1',
+      message: 'الوثائق غير واضحة',
+    },
+    {
+      id: 2,
+      isActive: true,
+      messageType: '2',
+      message: 'المعلومات غير مكتملة',
+    },
+    {
+      id: 3,
+      isActive: true,
+      messageType: '3',
+      message: 'الوثائق مكررة',
+    },
+    {
+      id: 4,
+      isActive: true,
+      messageType: '4',
+      message: 'الوثائق غير موجودة',
+    },
+    {
+      id: 5,
+      isActive: true,
+      messageType: '5',
+      message: 'الوثائق غير مطابقة',
     },
   ])
   const loading = ref(false)
