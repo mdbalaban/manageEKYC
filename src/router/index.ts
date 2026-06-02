@@ -9,54 +9,54 @@ const routes = [
   {
     path: '/settings',
     name: 'الإعدادات العامة',
-    icon: 'mdi-cog',
+    icon: 'fas fa-cog',
     children: [
       {
         path: '/countries',
         name: 'الدول',
-        icon: 'mdi-earth',
+        icon: 'fas fa-earth',
         component: () => import('@/views/countries/page/index.vue'),
       },
       {
         path: '/nationalities',
         name: 'الجنسيات',
-        icon: 'mdi-flag',
+        icon: 'fas fa-flag',
         component: () => import('@/views/nationalities/page/index.vue'),
       },
       {
         path: '/cities',
         name: 'المدن',
-        icon: 'mdi-city',
+        icon: 'fas fa-city',
         component: () => import('@/views/cities/page/index.vue'),
       },
       {
         path: '/regions',
         name: 'المناطق',
-        icon: 'mdi-map-marker',
+        icon: 'fas fa-map-marker',
         component: () => import('@/views/regions/page/index.vue'),
       },
       {
         path: '/banks',
         name: 'المصارف',
-        icon: 'mdi-bank',
+        icon: 'fas fa-bank',
         component: () => import('@/views/banks/page/index.vue'),
       },
       {
         path: '/branches',
         name: 'الفروع',
-        icon: 'mdi-source-branch',
+        icon: 'fas fa-code-branch',
         component: () => import('@/views/branches/page/index.vue'),
       },
       {
         path: '/kyc-model-types',
         name: ' نماذج KYC',
-        icon: 'mdi-account-circle',
+        icon: 'fas fa-circle-user',
         component: () => import('@/views/kycModelTypes/page/index.vue'),
       },
       {
         path: '/set-reject-messages',
         name: ' إعداد رسائل الرفض',
-        icon: 'mdi-message',
+        icon: 'fas fa-message',
         component: () => import('@/views/setRejectMessages/page/index.vue'),
       },
     ],
@@ -64,12 +64,12 @@ const routes = [
   {
     path: '/requests',
     name: 'إدارة الطلبات',
-    icon: 'mdi-file-document',
+    icon: 'fas fa-file',
     children: [
       {
         path: '/new-requests',
         name: 'الطلبات الجديدة',
-        icon: 'mdi-file-document-edit',
+        icon: 'fas fa-file-pen',
         component: () => import('@/views/newRequestsKyc/page/index.vue'),
       },
     ],

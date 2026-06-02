@@ -5,7 +5,7 @@
         <v-text-field
           v-model="search"
           placeholder="بحث..."
-          prepend-inner-icon="mdi-magnify"
+          prepend-inner-icon="fas fa-search"
           variant="outlined"
           density="compact"
           hide-details
@@ -57,7 +57,7 @@
 
         <template v-slot:no-data>
           <div class="py-12 text-center">
-            <v-icon size="64" color="grey-lighten-2" class="mb-4">mdi-database-off-outline</v-icon>
+            <v-icon size="64" color="grey-lighten-2" class="mb-4">fas fa-database</v-icon>
             <div class="text-body-1 text-medium-emphasis">لا توجد بيانات</div>
           </div>
         </template>
@@ -97,7 +97,7 @@ const props = defineProps({
   modelPage: { type: Number, default: 1 },
 })
 
-defineEmits(['toggle', 'search', 'page-change'])
+defineEmits(['show', 'search', 'page-change'])
 
 const search = ref('')
 const currentPage = ref(props.modelPage)

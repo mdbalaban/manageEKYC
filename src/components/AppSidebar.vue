@@ -8,7 +8,7 @@
   >
     <div class="pa-4 d-flex align-center" style="min-height: 72px">
       <div class="logo-icon me-3">
-        <v-icon color="accent" size="32">mdi-bank-outline</v-icon>
+        <v-icon color="accent" size="32">fas fa-building-columns</v-icon>
       </div>
 
       <div>

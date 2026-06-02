@@ -2,7 +2,7 @@
   <v-dialog v-model="model" max-width="400">
     <v-card rounded="xl">
       <v-card-text class="pa-6 text-center">
-        <v-icon color="error" size="64" class="mb-4"> mdi-trash-can-outline </v-icon>
+        <v-icon color="error" size="64" class="mb-4"> fas fa-trash-alt </v-icon>
 
         <div class="text-h6 font-weight-bold mb-2">تأكيد الحذف</div>
 

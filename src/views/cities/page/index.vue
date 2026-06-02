@@ -2,8 +2,8 @@
   <div class="d-flex align-center mb-6">
     <div>
       <div class="d-flex align-center gap-2 mb-1">
-        <v-icon icon="mdi-city-variant-outline" color="primary" size="28" />
-        <h1 class="text-h5 font-weight-black text-primary">إدارة المدن</h1>
+        <v-icon icon="fas fa-city" color="primary" size="28" />
+        <h1 class="text-h5 font-weight-black text-primary px-2">إدارة المدن</h1>
       </div>
       <div class="text-body-2 text-medium-emphasis">
         إجمالي السجلات: <strong>{{ store.items.length }}</strong>

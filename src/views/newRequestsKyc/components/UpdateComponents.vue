@@ -3,7 +3,7 @@
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary">mdi-map-marker</v-icon>
+          <v-icon color="primary">fas fa-map-marker</v-icon>
           <span class="font-weight-bold">{{
             isEditMode ? 'تعديل المنطقة' : 'إضافة منطقة جديدة'
           }}</span>

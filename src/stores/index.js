@@ -367,7 +367,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 1,
       modelType: 1,
       name: 'مواطن ليبي',
-      icon: 'fa fa-user',
+      icon: 'fas fa-user',
       isActive: true,
     },
     {
@@ -375,7 +375,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 1,
       modelType: 2,
       name: 'أجنبي مقيم',
-      icon: 'fa fa-globe',
+      icon: 'fas fa-globe',
       isActive: true,
     },
     {
@@ -383,7 +383,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 1,
       modelType: 3,
       name: 'أجنبي غير مقيم',
-      icon: 'fa fa-plane',
+      icon: 'fas fa-plane',
       isActive: true,
     },
     {
@@ -391,7 +391,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 2,
       modelType: 20,
       name: 'شركات خاصة',
-      icon: 'fa fa-building',
+      icon: 'fas fa-building',
       isActive: true,
     },
     {
@@ -399,7 +399,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 2,
       modelType: 21,
       name: 'شركات عامة',
-      icon: 'fa fa-briefcase',
+      icon: 'fas fa-briefcase',
       isActive: true,
     },
     {
@@ -407,7 +407,7 @@ export const useKycModelTypesStore = defineStore('kycModelTypes', () => {
       requestType: 2,
       modelType: 30,
       name: 'منظمات ومؤسسات',
-      icon: 'fa fa-university',
+      icon: 'fas fa-university',
       isActive: true,
     },
   ])

@@ -5,7 +5,7 @@
         <v-text-field
           v-model="search"
           placeholder="بحث..."
-          prepend-inner-icon="mdi-magnify"
+          prepend-inner-icon="fas fa-search"
           variant="outlined"
           density="compact"
           hide-details
@@ -28,18 +28,6 @@
         class="rtl-table"
         hover
       >
-        <template v-slot:[`item.isActive`]="{ item }">
-          <v-chip
-            :color="item.isActive ? 'success' : 'error'"
-            size="small"
-            variant="tonal"
-            rounded="lg"
-          >
-            <v-icon start size="10">mdi-circle</v-icon>
-            {{ item.isActive ? 'نشط' : 'غير نشط' }}
-          </v-chip>
-        </template>
-
         <template v-slot:[`item.toggle`]="{ item }">
           <v-tooltip :text="item.isActive ? 'إلغاء التفعيل' : 'تفعيل'" location="top">
             <template v-slot:activator="{ props }">
@@ -59,10 +47,10 @@
         <template v-slot:[`item.actions`]="{ item }">
           <div class="d-flex gap-1 justify-center">
             <v-btn icon variant="text" color="primary" size="small" @click="$emit('edit', item)">
-              <v-icon size="18">mdi-pencil-outline</v-icon>
+              <v-icon size="18">fas fa-pencil-alt</v-icon>
             </v-btn>
             <v-btn icon variant="text" color="error" size="small" @click="$emit('delete', item)">
-              <v-icon size="18">mdi-trash-can-outline</v-icon>
+              <v-icon size="18">fas fa-trash-alt</v-icon>
             </v-btn>
           </div>
         </template>
@@ -73,7 +61,7 @@
 
         <template v-slot:no-data>
           <div class="py-12 text-center">
-            <v-icon size="64" color="grey-lighten-2" class="mb-4">mdi-database-off-outline</v-icon>
+            <v-icon size="64" color="grey-lighten-2" class="mb-4">fas fa-database</v-icon>
             <div class="text-body-1 text-medium-emphasis">لا توجد بيانات</div>
           </div>
         </template>

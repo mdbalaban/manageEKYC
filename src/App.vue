@@ -4,7 +4,7 @@
 
     <v-app-bar elevation="0" color="surface" height="64" border="b">
       <v-btn icon variant="text" @click="drawer = !drawer" class="ms-2">
-        <v-icon>mdi-menu</v-icon>
+        <v-icon>fas fa-bars</v-icon>
       </v-btn>
       <v-app-bar-title>
         <span class="font-weight-bold text-primary">{{ currentPageTitle }}</span>
@@ -44,7 +44,7 @@ const drawer = ref(false)
 
 const route = useRoute()
 
-const snackbar = ref({ show: false, text: '', color: 'success', icon: 'mdi-check-circle' })
+const snackbar = ref({ show: false, text: '', color: 'success', icon: 'fas fa-circle-check' })
 
 const showSnackbar = (text, color = 'success') => {
   snackbar.value = {
@@ -53,10 +53,10 @@ const showSnackbar = (text, color = 'success') => {
     color,
     icon:
       color === 'success'
-        ? 'mdi-check-circle'
+        ? 'fas fa-circle-check'
         : color === 'error'
-          ? 'mdi-alert-circle'
-          : 'mdi-information',
+          ? 'fas fa-circle-exclamation'
+          : 'fas fa-circle-info',
   }
 }
 

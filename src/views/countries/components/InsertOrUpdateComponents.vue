@@ -1,7 +1,7 @@
 <template>
   <v-btn
     color="primary"
-    prepend-icon="mdi-plus"
+    prepend-icon="fas fa-plus"
     elevation="0"
     class="font-weight-bold"
     @click="openForAdd"
@@ -13,7 +13,7 @@
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center">
-          <v-icon color="primary" class="me-2">mdi-earth</v-icon>
+          <v-icon color="primary" class="me-2">fas fa-earth</v-icon>
           <span class="font-weight-bold">
             {{ isEditMode ? 'تعديل دولة' : 'إضافة دولة جديدة' }}
           </span>

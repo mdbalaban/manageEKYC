@@ -1,7 +1,7 @@
 <template>
   <v-btn
     color="primary"
-    prepend-icon="mdi-plus"
+    prepend-icon="fas fa-plus"
     elevation="0"
     class="font-weight-bold"
     @click="openForAdd"
@@ -13,7 +13,7 @@
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary">mdi-source-branch</v-icon>
+          <v-icon color="primary">fas fa-code-branch</v-icon>
           <span class="font-weight-bold">{{ isEditMode ? 'تعديل الفرع' : 'إضافة فرع جديد' }}</span>
         </div>
       </v-card-title>
