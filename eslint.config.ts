@@ -23,4 +23,18 @@ export default defineConfigWithVueTs(
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
   skipFormatting,
+
+  {
+    rules: {
+      'vue/block-lang': [
+        'error',
+        {
+          script: {
+            lang: 'ts',
+            allowNoLang: true,
+          },
+        },
+      ],
+    },
+  },
 )
