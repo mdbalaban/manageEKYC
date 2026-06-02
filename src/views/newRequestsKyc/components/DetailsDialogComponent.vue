@@ -2,16 +2,17 @@
   <v-dialog v-model="dialog" fullscreen transition="dialog-bottom-transition" persistent scrollable>
     <v-card>
       <v-toolbar flat color="primary" height="60">
+        <v-toolbar-title class="font-weight-bold text-white">
+          مراجعة طلب KYC — {{ customer?.fullName }}
+          <v-chip :color="statusColor" variant="flat" size="small" class="me-4 font-weight-bold">
+            {{ statusLabel }}
+          </v-chip>
+        </v-toolbar-title>
+
+        <v-spacer />
         <v-btn icon color="white" @click="close">
           <v-icon>fas fa-close</v-icon>
         </v-btn>
-        <v-toolbar-title class="font-weight-bold text-white">
-          مراجعة طلب KYC — {{ customer?.fullName }}
-        </v-toolbar-title>
-        <v-spacer />
-        <v-chip :color="statusColor" variant="flat" size="small" class="me-4 font-weight-bold">
-          {{ statusLabel }}
-        </v-chip>
       </v-toolbar>
 
       <v-card-text class="pa-0">
