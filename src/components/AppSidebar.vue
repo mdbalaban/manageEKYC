@@ -3,14 +3,10 @@
     v-model="drawerModel"
     floating
     :location="$vuetify.locale.isRtl ? 'right' : 'left'"
-    color="primary"
+    color="onSecondary"
     width="260"
   >
     <div class="pa-4 d-flex align-center" style="min-height: 72px">
-      <div class="logo-icon me-3">
-        <v-icon color="accent" size="32">fas fa-building-columns</v-icon>
-      </div>
-
       <div>
         <div class="text-white font-weight-black text-h6 lh-1">نظام الإدارة EKYC</div>
       </div>
@@ -18,8 +14,14 @@
 
     <v-list density="compact" nav>
       <v-list-group v-for="group in menuGroups" :key="group.path">
-        <template #activator="{ props }">
-          <v-list-item v-bind="props" :title="group.name" :prepend-icon="group.icon" />
+        <template #activator="{ props, isOpen }">
+          <v-list-item v-bind="props" :title="group.name" :prepend-icon="group.icon">
+            <template #append>
+              <v-icon size="12">
+                {{ isOpen ? 'fa fa-chevron-down' : 'fa fa-chevron-left' }}
+              </v-icon>
+            </template>
+          </v-list-item>
         </template>
 
         <v-list-item
@@ -28,7 +30,11 @@
           :to="child.path"
           :title="child.name"
           :prepend-icon="child.icon"
-        />
+        >
+          <template #prepend>
+            <v-icon size="18">{{ child.icon }}</v-icon>
+          </template>
+        </v-list-item>
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
@@ -66,5 +72,9 @@ const menuGroups = router.options.routes.filter((r) => r.children?.length)
 
 .lh-1 {
   line-height: 1.2 !important;
+}
+
+:deep(.v-list-group__items .v-list-item) {
+  padding-inline-start: 20px !important;
 }
 </style>

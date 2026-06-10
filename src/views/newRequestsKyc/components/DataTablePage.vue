@@ -29,7 +29,7 @@
         hover
       >
         <template v-slot:[`item.KycRequestType`]="{ item }">
-          <v-chip size="small" color="primary">
+          <v-chip size="small" color="1A3A6B">
             {{ getKycRequestTypeEnumTypeString(item.KycRequestType) }}
           </v-chip>
         </template>
@@ -43,14 +43,42 @@
           </v-chip>
         </template>
 
-        <template v-slot:[`item.actions`]="{ item }">
+        <!-- <template v-slot:[`item.actions`]="{ item }">
           <div class="d-flex justify-center">
             <v-btn variant="flat" color="primary" size="small" @click="$emit('show', item)">
               عرض التفاصيل
             </v-btn>
           </div>
-        </template>
+        </template> -->
+        <template #item.actions="{ item }">
+          <v-menu>
+            <template #activator="{ props }">
+              <v-btn flat size="small" v-bind="props">
+                <v-icon size="30" color="onPrimary"> fa fa-ellipsis-v </v-icon>
+              </v-btn>
+            </template>
 
+            <v-list density="compact">
+              <v-list-item @click="$emit('show', item)">
+                <template #prepend>
+                  <v-icon size="small" color="blue"> fa fa-eye </v-icon>
+                </template>
+
+                <v-list-item-title> عرض بيانات العميل </v-list-item-title>
+              </v-list-item>
+
+              <v-divider />
+
+              <v-list-item>
+                <template #prepend>
+                  <v-icon size="small" color="red"> fa fa-trash </v-icon>
+                </template>
+
+                <v-list-item-title> حذف </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </template>
         <template v-slot:loading>
           <v-skeleton-loader v-for="i in 5" :key="i" type="table-row" />
         </template>
