@@ -3,7 +3,7 @@
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center gap-2">
-          <v-icon color="primary">fas fa-circle-user</v-icon>
+          <v-icon size="small" color="onPrimary">fas fa-circle-user</v-icon>
           <span class="font-weight-bold">{{
             isEditMode ? 'تعديل النموذج' : 'إضافة نموذج جديد'
           }}</span>
@@ -41,7 +41,7 @@
       <v-card-actions class="pa-4">
         <v-btn variant="tonal" rounded="lg" @click="close">إلغاء</v-btn>
         <v-spacer />
-        <v-btn color="primary" variant="flat" rounded="lg" @click="save">
+        <v-btn color="onPrimary" variant="flat" rounded="lg" @click="save">
           {{ isEditMode ? 'حفظ التعديلات' : 'إضافة' }}
         </v-btn>
       </v-card-actions>

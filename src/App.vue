@@ -2,12 +2,12 @@
   <v-app :theme="theme">
     <AppSidebar v-model:drawer="drawer" />
 
-    <v-app-bar elevation="0" color="surface" height="64" border="b">
+    <v-app-bar elevation="0" color="onSecondary" height="64" border="b">
       <v-btn icon variant="text" @click="drawer = !drawer" class="ms-2">
         <v-icon>fas fa-bars</v-icon>
       </v-btn>
       <v-app-bar-title>
-        <span class="font-weight-bold text-primary">{{ currentPageTitle }}</span>
+        <span class="font-weight-bold text-white">{{ currentPageTitle }}</span>
       </v-app-bar-title>
     </v-app-bar>
 

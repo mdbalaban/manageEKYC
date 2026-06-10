@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    color="primary"
+    color="onPrimary"
     prepend-icon="fas fa-plus"
     elevation="0"
     class="font-weight-bold"
@@ -13,7 +13,7 @@
     <v-card rounded="xl">
       <v-card-title class="pa-6 pb-3">
         <div class="d-flex align-center">
-          <v-icon color="primary" class="me-2">fas fa-earth</v-icon>
+          <v-icon size="small" color="onPrimary" class="me-2">fas fa-earth</v-icon>
           <span class="font-weight-bold">
             {{ isEditMode ? 'تعديل دولة' : 'إضافة دولة جديدة' }}
           </span>
@@ -38,7 +38,7 @@
       <v-card-actions class="pa-4">
         <v-btn variant="tonal" @click="close">إلغاء</v-btn>
         <v-spacer />
-        <v-btn color="primary" variant="flat" @click="save">
+        <v-btn color="onPrimary" variant="flat" @click="save">
           {{ isEditMode ? 'حفظ التعديلات' : 'إضافة' }}
         </v-btn>
       </v-card-actions>

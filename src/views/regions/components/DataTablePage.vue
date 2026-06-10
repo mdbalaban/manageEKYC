@@ -46,7 +46,7 @@
 
         <template v-slot:[`item.actions`]="{ item }">
           <div class="d-flex gap-1 justify-center">
-            <v-btn icon variant="text" color="primary" size="small" @click="$emit('edit', item)">
+            <v-btn icon variant="text" color="onPrimary" size="small" @click="$emit('edit', item)">
               <v-icon size="18">fas fa-pencil-alt</v-icon>
             </v-btn>
             <v-btn icon variant="text" color="error" size="small" @click="$emit('delete', item)">
