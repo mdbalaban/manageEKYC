@@ -6,9 +6,6 @@
           <v-icon icon="fas fa-file-pen" color="primary" size="28" />
           <h1 class="text-h5 font-weight-black text-primary px-2">الطلبات الجديدة</h1>
         </div>
-        <div class="text-body-2 text-medium-emphasis">
-          إجمالي السجلات: <strong>{{ store.items.length }}</strong>
-        </div>
       </div>
       <v-spacer />
     </div>
@@ -31,7 +28,7 @@
 import { ref } from 'vue'
 import DataTablePage from '../components/DataTablePage.vue'
 
-import DetailsDialogComponent from '../components/DetailsDialogComponent.vue'
+import DetailsDialogComponent from '../components/KycDetailsDialogComponent.vue'
 import { useKycRequestStore } from '@/stores/kycRequestStore.js'
 
 const store = useKycRequestStore()

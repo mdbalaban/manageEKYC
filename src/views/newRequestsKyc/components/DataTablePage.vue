@@ -1,7 +1,8 @@
 <template>
   <div>
-    <v-card elevation="0" rounded="xl" border>
-      <div class="pa-4 d-flex align-center flex-wrap gap-3">
+    <SearchComponent/>
+    <v-card elevation="2" rounded="lg" border>
+      <!-- <div class="pa-4 d-flex align-center flex-wrap gap-3">
         <v-text-field
           v-model="search"
           placeholder="بحث..."
@@ -15,7 +16,7 @@
           @update:modelValue="$emit('search', $event)"
         />
         <slot name="filters" />
-      </div>
+      </div> -->
 
       <v-divider />
 
@@ -112,8 +113,9 @@
 </template>
 
 <script setup>
-import * as KycEnums from '@/data/kycEnums.js'
 import { ref, watch } from 'vue'
+import * as KycEnums from '@/data/kycEnums.js'
+import SearchComponent from './SearchComponent.vue'
 
 const kycEnums = KycEnums
 const props = defineProps({
